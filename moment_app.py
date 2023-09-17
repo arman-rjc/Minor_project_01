@@ -4,6 +4,14 @@ from math import sqrt
 import streamlit as st
 from handcalcs.decorator import handcalc
 
+#________________________________________________________________________________________________________
+# How to run this app:
+# open anaconda prompt
+# Open task manager and right click twice to get the properties tab
+# Change start in ""H:\_Personal\07 Spreadsheet Development\07-Projects\Streamlit_app" with the file location
+# Go to streamlit and write "stremlit run app.py" replace app.py with the python files name
+#________________________________________________________________________________________________________
+
 st.set_page_config(layout='wide')
 st.title('**Concrete Flexural Reinforcement Calculator**')
 # st.divider()  # 👈 Draws a horizontal rule
