@@ -13,7 +13,7 @@ from handcalcs.decorator import handcalc
 #________________________________________________________________________________________________________
 
 st.set_page_config(layout='wide')
-st.title('**Concrete Flexural Reinforcement Calculator**')
+st.title('**:blue[Concrete Flexural Reinforcement Calculator]**')
 # st.divider()  # 👈 Draws a horizontal rule
 
 st.sidebar.write('## Input parameters')
@@ -36,15 +36,27 @@ if unit_selected == "Metric":
     M_f = M_f*10**6  # N-mm/m
     d = min(0.9*(h_c), h_c-cover-db/2) # mm
 
-    st.write(f'Factored moment = **{M_f}** N-mm/m')
-    st.write(f'Concrete section height, h_c = **{h_c}** mm')
-    st.write(f'Concrete section width,b= **{b}** mm')
-    st.write(f'Clear cover = **{cover}** mm')
-    st.write(f'Bar diameter,db = **{db}** mm')
-    st.write(f'phi_c = **{phi_c}**')
-    st.write(f'Concrete compressive strength, f_c = **{f_c}** MPa')
-    st.write(f'Steel yield strength, f_y = **{f_y}** MPa')
-    st.write(f'Effective depth, d = **{d}** mm')
+
+    # Create two columns using st.beta_columns()
+    left_column, right_column = st.columns(2)
+
+    # Add text to the left column
+    with left_column:
+        st.write("### **Input paramerts:**")
+        st.write(f'	:black_medium_small_square:  Factored moment = **{M_f}** N-mm/m')
+        st.write(f':black_medium_small_square: Concrete section height, h_c = **{h_c}** mm')
+        st.write(f':black_medium_small_square: Concrete section width,b= **{b}** mm')
+        st.write(f':black_medium_small_square: Clear cover = **{cover}** mm')
+        st.write(f':black_medium_small_square: Bar diameter,db = **{db}** mm')
+        st.write(f':black_medium_small_square: phi_c = **{phi_c}**')
+        st.write(f':black_medium_small_square: Concrete compressive strength, f_c = **{f_c}** MPa')
+        st.write(f':black_medium_small_square: Steel yield strength, f_y = **{f_y}** MPa')
+        st.write(f':black_medium_small_square: Effective depth, d = **{d}** mm')
+    # Add an image to the right column
+    # Add an image to the right column with a specified width and height
+    with right_column:
+        image_filename = 'd.png'  # Replace with the actual image file
+        st.image(image_filename, caption='Fig 1: Section parameters', width=400)
 else:
 
     M_f = st.sidebar.number_input('M_f (lb-ft/ft)')
@@ -80,7 +92,7 @@ else:
     f_y = f_y
 
 
-st.write(f':one: Required Area Calculation')
+st.write(f':one: :blue[Required Area Calculation]')
 
 @handcalc()
 def as_calc(f_c,b,d,M_f):
@@ -103,7 +115,7 @@ st.write(f'Required steel area = {round(As_req,1)} mm2/m')
 
 
 # Use the quick calc and compared error percentage 
-st.write(f':two: Required Area Calculation (Approximation)')
+st.write(f':two: :blue[Required Area Calculation (Approximation)]')
 @handcalc()
 def rough_check(M_f,d):
     As_new  = M_f/(300*d)
@@ -120,7 +132,7 @@ st.write(f'Error percentage  = {round(((As_new-As_req)/As_new)*100,1)} %')
 
 # List of bar area and bar diameter 
 Area_list = [100,200,300,500,700,1000,1500,2500]
-bar_dia_list = [10, 15, 20, 25,30,35,45,55]
+bar_dia_list = [10, 15, 20, 25, 30, 35, 45, 55]
 
 Area_list_imp = [0.11,0.20,0.31,0.44,0.60,0.79,1.0,1.27]
 bar_dia_list_imp = [3, 4, 5, 6,7,8,9,10]
@@ -143,4 +155,7 @@ for i in range(len(bar_dia_list)):
 
 
 
+
+image_filename_2 = 'bar_diameter_table.png'  # Replace with the actual image file
+st.image(image_filename_2, caption='Fig 2: Bar diameter and area', width=600)
 
