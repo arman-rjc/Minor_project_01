@@ -142,14 +142,14 @@ st.write('### Options:')
 for i in range(len(bar_dia_list)-1):
 
     if unit_selected == "Metric":
-        no_of_bar = round(As_req/(Area_list[i]))
+        no_of_bar = math.ceil(As_req/(Area_list[i]))
         if no_of_bar<1:
             no_of_bar = 1
             spacing = 1000/(no_of_bar)
         else:
             spacing = 1000/(no_of_bar-1) # per m 
     else:
-        no_of_bar = round(As_req/(Area_list[i]))
+        no_of_bar = math.ceil(As_req/(Area_list[i]))
         spacing = 1000/(no_of_bar-1) # per m 
 
         # per m 
