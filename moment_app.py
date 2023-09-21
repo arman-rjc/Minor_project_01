@@ -60,11 +60,11 @@ if unit_selected == "Metric":
         st.image(image_filename, caption='Fig 1: Section parameters', width=400)
 else:
 
-    M_f = st.sidebar.number_input('M_f (kip-ft/ft)')
-    h_c = st.sidebar.number_input('h_c (in)')
-    b = st.sidebar.number_input('b (in)')
-    cover = st.sidebar.number_input('cover (in)')
-    db = st.sidebar.number_input('db (in)')
+    M_f = st.sidebar.number_input('M_f (kip-ft/ft)',value = 20)
+    h_c = st.sidebar.number_input('h_c (in)',value = 30)
+    b = st.sidebar.number_input('b (in)',value = 20)
+    cover = st.sidebar.number_input('cover (in)',value = 1.5)
+    db = st.sidebar.number_input('db (in)',value = 0.31)
     phi_c = st.sidebar.number_input('phi_c',value = 0.65)
     f_c = st.sidebar.number_input('f_c (MPa)', value = 30)
     f_y = st.sidebar.number_input('f_y (MPa)',value = 400)
