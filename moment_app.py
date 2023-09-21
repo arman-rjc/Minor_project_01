@@ -144,7 +144,7 @@ for i in range(len(bar_dia_list)-1):
 
     if unit_selected == "Metric":
         no_of_bar = math.ceil(As_req/(Area_list[i]))
-        if no_of_bar<1:
+        if no_of_bar<=1:
             no_of_bar = 1
             spacing = 1000/(no_of_bar)
         else:
