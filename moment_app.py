@@ -147,16 +147,16 @@ for i in range(len(bar_dia_list)-1):
         no_of_bar = math.ceil(As_req/(Area_list[i]))
         if no_of_bar<=1:
             no_of_bar = 1
-            spacing = 1000/(no_of_bar)
+            spacing = b/(no_of_bar)
         else:
-            spacing = 1000/(no_of_bar-1) # per m 
+            spacing = b/(no_of_bar-1) # per m 
     else:
-        no_of_bar = math.ceil(As_req/(Area_list[i]))
+        no_of_bar = math.ceil((As_req/3.28)/(Area_list[i]))
         if no_of_bar<=1:
             no_of_bar = 1
-            spacing = 304.8/(no_of_bar)
+            spacing = b/(no_of_bar)
         else:
-            spacing = 304.8/(no_of_bar-1) # per m 
+            spacing = b/(no_of_bar-1) # per m 
 
         # per m 
     st.write(f'({i+1}) Provide **{round(no_of_bar,0)}** - {bar_dia_list[i]}M  bar at **{round(spacing,0)}** mm or **{round(spacing/25.4,0)}** inch o.c')
