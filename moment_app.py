@@ -142,14 +142,17 @@ st.write('### Options:')
 for i in range(len(bar_dia_list)):
 
     if unit_selected == "Metric":
-        no_of_bar = As_req/Area_list[i]
-        spacing = 1000/(no_of_bar-1) # per m 
+        no_of_bar = round(As_req/(Area_list[i]))
+        if no_of_bar<1:
+            no_of_bar = 1
+            spacing = 1000/(no_of_bar)
+        else:
+            no_of_bar = round(As_req/Area_list[i])
+            spacing = 1000/(no_of_bar-1) # per m 
     else:
-        no_of_bar = As_req/(Area_list[i])
+        no_of_bar = round(As_req/(Area_list[i]))
         spacing = 1000/(no_of_bar-1) # per m 
-    if no_of_bar<1:
-        no_of_bar = 1
-        spacing = 1000/(no_of_bar)
+
         # per m 
     st.write(f'({i+1}) Provide **{round(no_of_bar,0)}** - {bar_dia_list[i]}M  bar at **{round(spacing,0)}** mm or **{round(spacing/25.4,0)}** inch o.c')
 
