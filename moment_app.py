@@ -60,7 +60,7 @@ if unit_selected == "Metric":
         st.image(image_filename, caption='Fig 1: Section parameters', width=400)
 else:
 
-    M_f = st.sidebar.number_input('M_f (lb-ft/ft)')
+    M_f = st.sidebar.number_input('M_f (kip-ft/ft)')
     h_c = st.sidebar.number_input('h_c (in)')
     b = st.sidebar.number_input('b (in)')
     cover = st.sidebar.number_input('cover (in)')
@@ -70,7 +70,7 @@ else:
     f_y = st.sidebar.number_input('f_y (MPa)',value = 400)
 
 
-    M_f_mod = ((M_f/(0.2448*0.03937))/10**6)*3.28 # N-mm/m
+    M_f = M_f*4448221.6 # N-mm/m
     d = min(0.9*(h_c), h_c-cover-db/2)*25.4 # mm
 
     st.write(f'Factored moment = {M_f_mod} kN-m/m')
@@ -106,7 +106,7 @@ if unit_selected == "Metric":
     st.latex(As_latex)
 else:
 
-    As_latex, As_req = as_calc(f_c,b,d,M_f_mod*10**6)
+    As_latex, As_req = as_calc(f_c,b,d,M_f)
     st.latex(As_latex)
 
 
@@ -152,7 +152,11 @@ for i in range(len(bar_dia_list)-1):
             spacing = 1000/(no_of_bar-1) # per m 
     else:
         no_of_bar = math.ceil(As_req/(Area_list[i]))
-        spacing = 1000/(no_of_bar-1) # per m 
+        if no_of_bar<=1:
+            no_of_bar = 1
+            spacing = 1000/(no_of_bar)
+        else:
+            spacing = 1000/(no_of_bar-1) # per m 
 
         # per m 
     st.write(f'({i+1}) Provide **{round(no_of_bar,0)}** - {bar_dia_list[i]}M  bar at **{round(spacing,0)}** mm or **{round(spacing/25.4,0)}** inch o.c')
