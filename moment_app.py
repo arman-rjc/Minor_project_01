@@ -147,7 +147,6 @@ for i in range(len(bar_dia_list)):
             no_of_bar = 1
             spacing = 1000/(no_of_bar)
         else:
-            no_of_bar = round(As_req/Area_list[i])
             spacing = 1000/(no_of_bar-1) # per m 
     else:
         no_of_bar = round(As_req/(Area_list[i]))
