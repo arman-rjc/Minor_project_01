@@ -138,7 +138,8 @@ bar_dia_list = [10, 15, 20, 25, 30, 35, 45, 55]
 Area_list_imp = [0.11,0.20,0.31,0.44,0.60,0.79,1.0,1.27]
 bar_dia_list_imp = [3, 4, 5, 6,7,8,9,10]
 
-st.write('### Options:')
+st.divider()  # 👈 Draws a horizontal rule
+st.write('#### Reinforcing Options:')
 
 for i in range(len(bar_dia_list)-1):
 
@@ -156,7 +157,7 @@ for i in range(len(bar_dia_list)-1):
         # per m 
     st.write(f'({i+1}) Provide **{round(no_of_bar,0)}** - {bar_dia_list[i]}M  bar at **{round(spacing,0)}** mm or **{round(spacing/25.4,0)}** inch o.c')
 
-
+st.divider()  # 👈 Draws a horizontal rule
 
 
 image_filename_2 = 'bar_diameter_table.png'  # Replace with the actual image file
