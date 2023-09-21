@@ -73,7 +73,7 @@ else:
     M_f = M_f*4448221.6 # N-mm/m
     d = min(0.9*(h_c), h_c-cover-db/2)*25.4 # mm
 
-    st.write(f'Factored moment = {M_f_mod} kN-m/m')
+    st.write(f'Factored moment = {M_f} kN-m/m')
     st.write(f'h_c = {h_c*25.4} mm')
     st.write(f'b= {b*25.4} mm')
     st.write(f'Clear cover = {cover*25.4} mm')
