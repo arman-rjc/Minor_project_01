@@ -139,7 +139,7 @@ bar_dia_list_imp = [3, 4, 5, 6,7,8,9,10]
 
 st.write('### Options:')
 
-for i in range(len(bar_dia_list)):
+for i in range(len(bar_dia_list)-1):
 
     if unit_selected == "Metric":
         no_of_bar = round(As_req/(Area_list[i]))
