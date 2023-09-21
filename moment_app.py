@@ -15,7 +15,7 @@ from handcalcs.decorator import handcalc
 
 st.set_page_config(layout='wide')
 st.title('**:blue[Concrete Flexural Reinforcement Calculator]**')
-# st.divider()  # 👈 Draws a horizontal rule
+st.divider()  # 👈 Draws a horizontal rule
 
 st.sidebar.write('## Input parameters')
 
