@@ -61,9 +61,12 @@ st.write(f'### **:black_medium_small_square: Steel Section Geometry:**')
 
 
 st.sidebar.write('## Input parameters')
+units = ['Metric','Imperial']
+selected_units = st.sidebar.selectbox('Beam section unit:', units)
 
 # Get the column name for which you want to display unique items
 column_name = 'Ds_i'  # Replace 'YourColumnName' with the actual column name
+column_name_m = 'Ds_m'  # Replace 'YourColumnName' with the actual column name
 filename = "W_CISC.xlsm"
 
 selected_depth = "W8"
@@ -72,16 +75,21 @@ Criteria = "Mass"
 
 df = CISC_database_reader(filename)
 
-
-# Get unique items from the specified column
-unique_items = df[column_name].unique()
-
+if selected_units == 'Metric':
+    # Get unique items from the specified column
+    unique_items = df[column_name_m].unique()
+else:
+    # Get unique items from the specified column
+    unique_items = df[column_name].unique()    
 
 # Create a selectbox widget in the Streamlit sidebar
 selected_item = st.sidebar.selectbox("Select beam section", unique_items)
 
-mask = df.loc[:,"Ds_i"] == selected_item
 
+if selected_units == 'Metric':
+    mask = df.loc[:,"Ds_m"] == selected_item
+else:
+    mask = df.loc[:,"Ds_i"] == selected_item 
 
 st.write(f'### **:black_medium_small_square: Selected Section Geometry:**')
 df_section = df.loc[mask,["Ds_i","Ds_m","D","B","T","W","BT","HW",
