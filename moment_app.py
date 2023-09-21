@@ -1,5 +1,6 @@
 import forallpeople
 forallpeople.environment('structural', top_level=True)
+import math
 from math import sqrt
 import streamlit as st
 from handcalcs.decorator import handcalc
