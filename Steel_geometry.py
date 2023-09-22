@@ -58,6 +58,9 @@ def List_of_selected_depth(filename,selected_depth = "W",Criteria = "Ix"):
 # Setting page layout 
 st.set_page_config(layout='wide')
 
+# Add a banner image at the top
+st.image('gerber_beam.JPG',width = 400)
+
 
 # Add a banner image at the top
 # st.image('steel_beam.png', use_container_width=True)
