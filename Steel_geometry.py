@@ -122,34 +122,24 @@ with right_column:
     st.image(image_filename, caption='Fig 1: Section parameters', width=400)
 
 
-# Sample data
-data = {
-    'Parameters': ['Depth of beam', 'Width of beam', 'Flange thickness', 'Web thickness'],
-    'mm':  [D[0], B[0], T[0], W[0]],
-    'in': [D[0], B[0], T[0], W[0]]
-}
 
-# Create a DataFrame from the data
-df = pd.DataFrame(data)
+# Create two columns using st.beta_columns()
+left_column, right_column = st.columns(2)
 
-# Create a Streamlit app
-st.title("Table Example")
-
-# Custom CSS to reduce cell width
-custom_css = """
-<style>
-    .dataframe td {
-        max-width: 50px; /* Adjust the width as needed */
-        white-space: nowrap; /* Prevent text from wrapping */
-        overflow: hidden;
-        text-overflow: ellipsis; /* Add ellipsis for overflow text */
+with left_column:
+    # Sample data
+    data = {
+        'Parameters': ['Depth of beam', 'Width of beam', 'Flange thickness', 'Web thickness'],
+        'mm':  [D[0], B[0], T[0], W[0]],
+        'in': [D[0], B[0], T[0], W[0]]
     }
-</style>
-"""
 
-# Display the custom CSS
-st.write(custom_css, unsafe_allow_html=True)
+    # Create a DataFrame from the data
+    df = pd.DataFrame(data)
+
+    # Create a Streamlit app
+    st.title("Table Example")
 
 
-# Display the table
-st.table(df)
+    # Display the table
+    st.table(df)
