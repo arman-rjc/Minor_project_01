@@ -122,3 +122,18 @@ with right_column:
     st.image(image_filename, caption='Fig 1: Section parameters', width=400)
 
 
+# Sample data
+data = {
+    'Parameters': ['Depth of beam', 'Width of beam', 'Flange thickness', 'Web thickness'],
+    'mm':  [D[0], B[0], T[0], W[0]],
+    'in': [D[0], B[0], T[0], W[0]]
+}
+
+# Create a DataFrame from the data
+df = pd.DataFrame(data)
+
+# Create a Streamlit app
+st.title("Table Example")
+
+# Display the table
+st.table(df)
