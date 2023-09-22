@@ -94,10 +94,10 @@ date = st.sidebar.text_input("Date:")
 # Display the input values
 st.divider()  # 👈 Draws a horizontal rule
 
-st.write(f'**Project Name: {project_name}**')
-st.write(f'**Job No: {job_no}**')
-st.write(f'**Designer: {designer}**')
-st.write(f'**Date: {date}**')
+st.write(f'Project Name: {project_name}')
+st.write(f'Job No: {job_no}')
+st.write(f'Designer: {designer}')
+st.write(f'Date: {date}')
 st.divider()  # 👈 Draws a horizontal rule
 
 
