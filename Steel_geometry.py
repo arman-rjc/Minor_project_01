@@ -4,7 +4,8 @@ from math import sqrt
 import streamlit as st
 from handcalcs.decorator import handcalc
 import pandas as pd
-
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 #________________________________________________________________________________________________________
 # How to run this app:
@@ -54,23 +55,9 @@ def List_of_selected_depth(filename,selected_depth = "W",Criteria = "Ix"):
     return section_list
 
 
-
 # Setting page layout 
 st.set_page_config(layout='wide')
 st.write(f'### **:black_medium_small_square: Steel Section Geometry:**')
-
-# Define the disclaimer text
-disclaimer_text = """
-**Disclaimer of Warranty and Liability**
-
-By using this app, you acknowledge and agree that the results it provides are for informational purposes only. The engineer using this tool is solely responsible for verifying and validating the accuracy of the results obtained. This app is provided "as is," without any warranty or guarantee of any kind, express or implied. In no event shall the developers or contributors be liable for any damages or consequences arising from the use of this app. You are encouraged to exercise due diligence and professional judgment when relying on the output of this tool.
-"""
-
-# Display the disclaimer text if the checkbox is checked
-st.markdown(disclaimer_text)
-
-# Add a checkbox for users to acknowledge the disclaimer
-disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
 
 
 
@@ -135,3 +122,47 @@ with right_column:
     st.image(image_filename, caption='Fig 1: Section parameters', width=400)
 
 
+
+
+# Function to draw a steel W section
+def draw_steel_w_section(width, height, flange_width, flange_thickness, web_thickness):
+    fig, ax = plt.subplots()
+
+    # Draw the flanges
+    flange_left = patches.Rectangle((0, 0), flange_width, height, linewidth=1, edgecolor='b', facecolor='none')
+    flange_right = patches.Rectangle((width - flange_width, 0), flange_width, height, linewidth=1, edgecolor='b', facecolor='none')
+
+    # Draw the web
+    web = patches.Rectangle((flange_width, height / 2 - web_thickness / 2), width - 2 * flange_width, web_thickness, linewidth=1, edgecolor='b', facecolor='none')
+
+    # Add the shapes to the plot
+    ax.add_patch(flange_left)
+    ax.add_patch(flange_right)
+    ax.add_patch(web)
+
+    # Set plot limits
+    ax.set_xlim(0, width)
+    ax.set_ylim(0, height + 1)
+
+    # Add dimensions to the plot
+    ax.text(width / 2, -0.5, f"Width: {width}", ha='center')
+    ax.text(-0.5, height / 2, f"Height: {height}", va='center', rotation='vertical')
+    ax.text(flange_width / 2, height + 0.5, f"Flange Width: {flange_width}", ha='center')
+    ax.text(width - flange_width / 2, height + 0.5, f"Flange Width: {flange_width}", ha='center')
+    ax.text(width / 2, height / 2, f"Flange Thickness: {flange_thickness}", ha='center')
+    ax.text(width / 2, height / 2 - web_thickness / 2, f"Web Thickness: {web_thickness}", ha='center')
+
+    return fig
+
+# Create a Streamlit app
+st.title("Steel W Section Dimensions")
+
+# Define steel W section dimensions (you can modify these values)
+width = B
+height = D
+flange_width = B
+flange_thickness = T
+web_thickness = W
+
+# Draw the steel W section and display it in Streamlit
+st.pyplot(draw_steel_w_section(width, height, flange_width, flange_thickness, web_thickness))
