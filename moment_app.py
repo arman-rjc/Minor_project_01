@@ -17,8 +17,7 @@ st.set_page_config(layout='wide')
 st.title('**:blue[Concrete Flexural Reinforcement Calculator]**')
 st.divider()  # 👈 Draws a horizontal rule
 
-# Add a checkbox for users to acknowledge the disclaimer
-disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
+
 
 # Define the disclaimer text
 disclaimer_text = """
@@ -28,10 +27,12 @@ By using this app, you acknowledge and agree that the results it provides are fo
 """
 
 # Display the disclaimer text if the checkbox is checked
-if disclaimer_accepted:
-    st.markdown(disclaimer_text)
+st.markdown(disclaimer_text)
 
-    
+# Add a checkbox for users to acknowledge the disclaimer
+disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
+
+
 
 st.sidebar.write('## Input parameters')
 
