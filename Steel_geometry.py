@@ -55,6 +55,10 @@ def List_of_selected_depth(filename,selected_depth = "W",Criteria = "Ix"):
 
 
 
+# Setting page layout 
+st.set_page_config(layout='wide')
+st.write(f'### **:black_medium_small_square: Steel Section Geometry:**')
+
 # Define the disclaimer text
 disclaimer_text = """
 **Disclaimer of Warranty and Liability**
@@ -67,14 +71,6 @@ st.markdown(disclaimer_text)
 
 # Add a checkbox for users to acknowledge the disclaimer
 disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
-
-
-
-
-
-# Setting page layout 
-st.set_page_config(layout='wide')
-st.write(f'### **:black_medium_small_square: Steel Section Geometry:**')
 
 
 
