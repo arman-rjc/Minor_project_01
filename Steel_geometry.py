@@ -135,5 +135,21 @@ df = pd.DataFrame(data)
 # Create a Streamlit app
 st.title("Table Example")
 
+# Custom CSS to reduce cell width
+custom_css = """
+<style>
+    .dataframe td {
+        max-width: 50px; /* Adjust the width as needed */
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    }
+</style>
+"""
+
+# Display the custom CSS
+st.write(custom_css, unsafe_allow_html=True)
+
+
 # Display the table
 st.table(df)
