@@ -17,6 +17,22 @@ st.set_page_config(layout='wide')
 st.title('**:blue[Concrete Flexural Reinforcement Calculator]**')
 st.divider()  # 👈 Draws a horizontal rule
 
+# Add a checkbox for users to acknowledge the disclaimer
+disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
+
+# Define the disclaimer text
+disclaimer_text = """
+**Disclaimer of Warranty and Liability**
+
+By using this app, you acknowledge and agree that the results it provides are for informational purposes only. The engineer using this tool is solely responsible for verifying and validating the accuracy of the results obtained. This app is provided "as is," without any warranty or guarantee of any kind, express or implied. In no event shall the developers or contributors be liable for any damages or consequences arising from the use of this app. You are encouraged to exercise due diligence and professional judgment when relying on the output of this tool.
+"""
+
+# Display the disclaimer text if the checkbox is checked
+if disclaimer_accepted:
+    st.markdown(disclaimer_text)
+
+    
+
 st.sidebar.write('## Input parameters')
 
 unit = ['Metric', 'Imperial']
@@ -167,3 +183,4 @@ st.divider()  # 👈 Draws a horizontal rule
 image_filename_2 = 'bar_diameter_table.png'  # Replace with the actual image file
 st.image(image_filename_2, caption='Fig 2: Bar diameter and area', width=600)
 
+s
