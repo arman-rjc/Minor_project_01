@@ -127,7 +127,7 @@ with left_column:
     df = pd.DataFrame(data)
 
     # Create a Streamlit app
-    st.title("Data Table")
+    st.title(f"### **:black_medium_small_square: Data Table**")
 
 
     # Display the table
