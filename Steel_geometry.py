@@ -131,7 +131,7 @@ with left_column:
     df = pd.DataFrame(data)
 
     # Create a Streamlit app
-    st.write(f'### **:black_medium_small_square: Data Table for **{selected_item}**')
+    st.write(f'### **:black_medium_small_square: Data Table for {selected_item}**')
 
 
     # Display the table
