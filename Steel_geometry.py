@@ -62,6 +62,7 @@ st.set_page_config(layout='wide')
 st.image('gerber_beam.JPG',width = 400)
 
 
+
 # Add a banner image at the top
 # st.image('steel_beam.png', use_container_width=True)
 
@@ -80,8 +81,23 @@ st.markdown(disclaimer_text)
 # Add a checkbox for users to acknowledge the disclaimer
 disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
 
+#
+#  Create a Streamlit app
+st.sidebar.write("Project Information")
 
+# Add text input boxes for Project Name, Job No, Designer, and Date
+project_name = st.sidebar.text_input("Project Name:")
+job_no = st.sidebar.text_input("Job No:")
+designer = st.sidebar.text_input("Designer:")
+date = st.sidebar.text_input("Date:")
 
+# Display the input values
+st.divider()  # 👈 Draws a horizontal rule
+st.write(f"Project Name: {project_name}")
+st.write(f"Job No: {job_no}")
+st.write(f"Designer: {designer}")
+st.write(f"Date: {date}")
+st.divider()  # 👈 Draws a horizontal rule
 
 st.sidebar.write('## Input parameters')
 units = ['Metric','Imperial']
