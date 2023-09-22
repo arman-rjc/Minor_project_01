@@ -110,11 +110,29 @@ with left_column:
     T = df_section.loc[:,'T'].unique()
     W = df_section.loc[:,'W'].unique()
 
-    st.write(f'### **:black_medium_small_square: List of parameters:**')
-    st.write(f':black_medium_small_square: Depth of beam, d  = **{D[0]}** mm [**{round(D[0]/25.4,1)}** in]')
-    st.write(f':black_medium_small_square: Width of beam, b  = **{B[0]}** mm [**{round(B[0]/25.4,1)}** in]')
-    st.write(f':black_medium_small_square: Flange thickness, t  = **{T[0]}** mm [**{round(T[0]/25.4,1)}** in]')
-    st.write(f':black_medium_small_square: Web thickness, w  = **{W[0]}** mm [**{round(W[0]/25.4,1)}** in]')
+    # st.write(f'### **:black_medium_small_square: List of parameters:**')
+    # st.write(f':black_medium_small_square: Depth of beam, d  = **{D[0]}** mm [**{round(D[0]/25.4,1)}** in]')
+    # st.write(f':black_medium_small_square: Width of beam, b  = **{B[0]}** mm [**{round(B[0]/25.4,1)}** in]')
+    # st.write(f':black_medium_small_square: Flange thickness, t  = **{T[0]}** mm [**{round(T[0]/25.4,1)}** in]')
+    # st.write(f':black_medium_small_square: Web thickness, w  = **{W[0]}** mm [**{round(W[0]/25.4,1)}** in]')
+
+    # Sample data
+    data = {
+        'Parameters': ['Depth of beam,d = ', 'Width of beam,b = ', 'Flange thickness,t = ', 'Web thickness,w = '],
+        'mm':  [D[0], B[0], T[0], W[0]],
+        'in': [round(D[0]/25.4), round(B[0]/25.4), round(T[0]/25.4), round(W[0]/25.4)]
+    }
+
+    # Create a DataFrame from the data
+    df = pd.DataFrame(data)
+
+    # Create a Streamlit app
+    st.title("Data Table")
+
+
+    # Display the table
+    st.table(df)
+
 
     # Add an image to the right column with a specified width and height
 with right_column:
@@ -123,23 +141,4 @@ with right_column:
 
 
 
-# Create two columns using st.beta_columns()
-left_column, right_column = st.columns(2)
 
-with left_column:
-    # Sample data
-    data = {
-        'Parameters': ['Depth of beam', 'Width of beam', 'Flange thickness', 'Web thickness'],
-        'mm':  [D[0], B[0], T[0], W[0]],
-        'in': [D[0], B[0], T[0], W[0]]
-    }
-
-    # Create a DataFrame from the data
-    df = pd.DataFrame(data)
-
-    # Create a Streamlit app
-    st.title("Table Example")
-
-
-    # Display the table
-    st.table(df)
