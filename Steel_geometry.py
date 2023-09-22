@@ -111,10 +111,10 @@ with left_column:
     W = df_section.loc[:,'W'].unique()
 
     st.write(f'### **:black_medium_small_square: List of parameters:**')
-    st.write(f':black_medium_small_square: Depth of beam, d  = **{D[0]}** mm or **{round(D[0]/25.4,1)}** in')
-    st.write(f':black_medium_small_square: Width of beam, b  = **{B[0]}** mm or **{round(B[0]/25.4,1)}** in')
-    st.write(f':black_medium_small_square: Flange thickness, t  = **{T[0]}** mm or **{round(T[0]/25.4,1)}** in')
-    st.write(f':black_medium_small_square: Web thickness, w  = **{W[0]}** mm or **{round(W[0]/25.4,1)}** in')
+    st.write(f':black_medium_small_square: Depth of beam, d  = **{D[0]}** mm [**{round(D[0]/25.4,1)}** in]')
+    st.write(f':black_medium_small_square: Width of beam, b  = **{B[0]}** mm [**{round(B[0]/25.4,1)}** in]')
+    st.write(f':black_medium_small_square: Flange thickness, t  = **{T[0]}** mm [**{round(T[0]/25.4,1)}** in]')
+    st.write(f':black_medium_small_square: Web thickness, w  = **{W[0]}** mm [**{round(W[0]/25.4,1)}** in]')
 
     # Add an image to the right column with a specified width and height
 with right_column:
