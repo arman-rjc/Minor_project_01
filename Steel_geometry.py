@@ -120,7 +120,7 @@ with left_column:
     data = {
         'Parameters': ['Depth of beam,d = ', 'Width of beam,b = ', 'Flange thickness,t = ', 'Web thickness,w = '],
         'mm':  [D[0], B[0], T[0], W[0]],
-        'in': [round(D[0]/25.4), round(B[0]/25.4), round(T[0]/25.4), round(W[0]/25.4)]
+        'in': [round(D[0]/25.4,1), round(B[0]/25.4,1), round(T[0]/25.4,1), round(W[0]/25.4,1)]
     }
 
     # Create a DataFrame from the data
