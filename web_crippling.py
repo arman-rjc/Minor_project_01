@@ -6,8 +6,29 @@ import streamlit as st
 from handcalcs.decorator import handcalc
 
 st.set_page_config(layout='wide')
-st.title('**:blue[Steel Plate web crippling ]**')
+
+# Custom CSS for changing the font size, making it bold, and using Times New Roman font
+custom_css = """
+<style>
+    /* Apply to all text in the app */
+    body {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 16px; /* Adjust the font size as needed */
+        font-weight: bold;
+    }
+</style>
+"""
+
+# Display the custom CSS
+st.markdown(custom_css, unsafe_allow_html=True)
+
+
+
+
+st.title('**:blue[Steel Plate Web Crippling ]**')
 # st.divider()  # 👈 Draws a horizontal rule
+
+
 
 # Define the disclaimer text
 disclaimer_text = """
@@ -34,13 +55,13 @@ designer = st.sidebar.text_input("Designer:")
 date = st.sidebar.text_input("Date:")
 
 # Display the input values
-st.divider()  # 👈 Draws a horizontal rule
+# st.divider()  # 👈 Draws a horizontal rule
 
 st.write(f'Project Name: {project_name}')
 st.write(f'Job No: {job_no}')
 st.write(f'Designer: {designer}')
 st.write(f'Date: {date}')
-st.divider()  # 👈 Draws a horizontal rule
+# st.divider()  # 👈 Draws a horizontal rule
 
 
 st.sidebar.write('## Input parameters')
@@ -51,22 +72,48 @@ t = st.sidebar.number_input('Flange thickness, t (mm)',value = 10)
 tcp = st.sidebar.number_input('Column cap plate thickness (if any), tcp',value = 25)
 Fy = st.sidebar.number_input('Steel yield strength, f_y (MPa)',value = 345)
 
+P = st.sidebar.number_input('Axial applied force, P (kN)',value = 100)
 
 
-@handcalc()
+
+
+st.write('## :blue[Input parameters]')
+st.write('##### [Calculations are based on CSA S16 Clause 14.3.2]')
+
+# Create two columns using st.beta_columns()
+left_column,middle_column, right_column = st.columns(3)
+
+
+@handcalc(precision = 1)
 def web_cripling_resistance(w,N,t,Fy=345, tcp = 0):
-    '''
-    this function will retun the web crippling resistance (Brg) of beam or girder or a steel plate
-    w = thickness of the plate/ web thickness/ load per unit length 
-    N = length of bearing of an applied load 
-    '''
-    E = 200000 # MPa
-    Fy = 345  # MPa
-    phi_bi = 0.8
-    Br_1 = phi_bi*w*(N+10*t)*Fy
-    Br_2 = 1.45*phi_bi*w**2*sqrt(Fy*E)
-    Brg = min(Br_1,Br_2)/1000
-    return Brg
+    E = 200000 # Modulus of elasticity, MPa
+    Fy = 345  # Steel yield strength, MPa
+    Phi_bi = 0.8
+    B_r1 = Phi_bi*w*(N+10*t)*Fy  # Bearing resistance, N
+    B_r2 = 1.45*Phi_bi*w**2*sqrt(Fy*E)  # Bearing resistance, N
+    B_rg = min(B_r1,B_r2)/1000   # Maximum bearing resistance, kN
+    return B_rg
 
 
-Brg_latex, Brg = web_cripling_resistance(w,N,t,Fy=345, tcp = 0)
+Brg_latex, B_rg = web_cripling_resistance(w,N,t,Fy=345, tcp = 0)
+
+
+with left_column:
+
+    st.latex(Brg_latex)
+
+
+
+if B_rg>P:
+    st.write(f'#### Bearing resistance ({round(B_rg)} kN)  is greater than axial force ({round(P)}kN)')
+    st.write('#### [:green[Stiffner not reauired]]')
+else:
+    st.write(f'#### Bearing resistance ({round(B_rg)} kN) is less than axial force ({round(P)} kN)')   
+    st.write('#### [:red[Stiffener required]]')
+
+# Create two columns using st.beta_columns()
+left_column,middle_column, right_column = st.columns(3)
+
+with middle_column:
+    image_filename = 'Web_crippling.png'  # Replace with the actual image file
+    st.image(image_filename, caption='Fig 1: Section parameters', width=800)
