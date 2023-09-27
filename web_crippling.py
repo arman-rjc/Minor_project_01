@@ -117,3 +117,7 @@ left_column,middle_column, right_column = st.columns(3)
 with middle_column:
     image_filename = 'Web_crippling.png'  # Replace with the actual image file
     st.image(image_filename, caption='Fig 1: Section parameters', width=800)
+
+# Just to check how it works with branching and publishing the updated scripts
+image_filename = 'Web_crippling.png'  # Replace with the actual image file
+st.image(image_filename, caption='Fig 1: Section parameters', width=600)
