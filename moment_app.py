@@ -197,8 +197,7 @@ for i in range(len(bar_dia_list)-1):
 
 st.divider()  # 👈 Draws a horizontal rule
 
+with st.expander("Bar diameter information"):
+    image_filename_2 = 'bar_diameter_table.png'  # Replace with the actual image file
+    st.image(image_filename_2, caption='Fig 2: Bar diameter and area', width=600)
 
-image_filename_2 = 'bar_diameter_table.png'  # Replace with the actual image file
-st.image(image_filename_2, caption='Fig 2: Bar diameter and area', width=600)
-
-s
