@@ -82,18 +82,18 @@ def stiffener_plate_buckling_resistance(B: float, H: float):
     Phi = 0.9           # Force reduction factor 
     E = 200000          # Modulus of elasticity 
     k = 0.8             # considering plate attached to the top and bottom flange of a beam/column
-    pi = math.pi
-    A = B*H
-    L = H
-    I_x = (B*H**3)/12
-    r_x = sqrt(I_x/A)
-    Fex = (pi**2*E)/((k*L)/r_x)**2
+    pi = math.pi 
+    A = B*H             # mm2
+    L = H               # mm
+    I_x = (B*H**3)/12   # mm^4
+    r_x = sqrt(I_x/A)   
+    Fex = (pi**2*E)/((k*L)/r_x)**2     # MPa
     
-    I_y = (H*B**3)/12
+    I_y = (H*B**3)/12                  # mm^4
     r_y = sqrt(I_y/A)
-    Fey = (pi**2*E)/((k*L)/r_y)**2
+    Fey = (pi**2*E)/((k*L)/r_y)**2     # Mpa
     
-    Fe = min(Fex,Fey) # MPa
+    Fe = min(Fex,Fey)                  # MPa
     
     lamda = sqrt(Fy/Fe)
     Cr = (Phi*A*Fy)/(1+lamda**(2*n))**(1/n)
