@@ -64,10 +64,12 @@ st.sidebar.write('## Input parameters')
 B = st.sidebar.number_input('Steel Plate thickness/web thickness, b (mm)',value = 10)
 H = st.sidebar.number_input('Height of steel plate, d (mm)',value = 250)
 
+st.write("### **Input paramerts:**")
+
 # Create two columns using st.beta_columns()
 left_column,middle_column, right_column = st.columns(3)
 
-st.write("### **Input paramerts:**")
+
 
 @handcalc()
 def stiffener_plate_buckling_resistance(B,H):
@@ -101,5 +103,6 @@ Cr_kN_latex, Cr_kN = stiffener_plate_buckling_resistance(B,H)
 
 with left_column:
     st.latex(Cr_kN_latex)
-    st.write(f'Compressive strength of the plate is {Cr_kN} kN')
+    st.write(f'#### Compressive strength of the plate is {round(Cr_kN)} kN')
+
     
