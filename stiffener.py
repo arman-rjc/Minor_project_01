@@ -81,9 +81,9 @@ def stiffener_plate_buckling_resistance(B: float, H: float):
     E = 200000          # Modulus of elasticity 
     k = 0.8             # considering plate attached to the top and bottom flange of a beam/column
     pi = math.pi 
-    A = B*H             # mm2
-    L = H               # mm
-    I_x = (B*H**3)/12   # mm^4
+    A = B*H             
+    L = H               
+    I_x = (B*H**3)/12   
     r_x = sqrt(I_x/A)   
     Fex = (pi**2*E)/((k*L)/r_x)**2     
     
