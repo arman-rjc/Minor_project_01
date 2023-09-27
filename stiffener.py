@@ -71,11 +71,11 @@ left_column,middle_column, right_column = st.columns(3)
 @handcalc()
 def stiffener_plate_buckling_resistance(B,H):
 
-    Fy= 345 # MPa
-    n = 1.34 # For hot rolled steel 
-    Phi = 0.9
-    E = 200000
-    k = 0.8 # considering 
+    Fy= 345             # MPa
+    n = 1.34            # For hot rolled steel 
+    Phi = 0.9           # Force reduction factor 
+    E = 200000          # Modulus of elasticity 
+    k = 0.8             # considering plate attached to the top and bottom flange of a beam/column
     pi = math.pi
     A = B*H
     L = H
@@ -99,5 +99,6 @@ def stiffener_plate_buckling_resistance(B,H):
 Cr_kN_latex, Cr_kN = stiffener_plate_buckling_resistance(B,H)
 
 with left_column:
-
+    st.write(f'Compressive strength of the plate is {Cr_kN} kN')
     st.latex(Cr_kN_latex)
+    
