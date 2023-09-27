@@ -64,8 +64,6 @@ st.sidebar.write('## Input parameters')
 B = st.sidebar.number_input('Steel Plate thickness/web thickness, b (mm)',value = 10.00,step=0.01,format="%.2f")
 H = st.sidebar.number_input('Height of steel plate, d (mm)',value = 250.00,step=0.01,format="%.2f")
 
-B = float(B)
-H = float(H)
 
 st.write("### **Input paramerts:**")
 
@@ -87,17 +85,17 @@ def stiffener_plate_buckling_resistance(B: float, H: float):
     L = H               # mm
     I_x = (B*H**3)/12   # mm^4
     r_x = sqrt(I_x/A)   
-    Fex = (pi**2*E)/((k*L)/r_x)**2     # MPa
+    Fex = (pi**2*E)/((k*L)/r_x)**2     
     
-    I_y = (H*B**3)/12                  # mm^4
+    I_y = (H*B**3)/12                  
     r_y = sqrt(I_y/A)
-    Fey = (pi**2*E)/((k*L)/r_y)**2     # Mpa
+    Fey = (pi**2*E)/((k*L)/r_y)**2     
     
-    Fe = min(Fex,Fey)                  # MPa
+    Fe = min(Fex,Fey)                  
     
     lamda = sqrt(Fy/Fe)
     Cr = (Phi*A*Fy)/(1+lamda**(2*n))**(1/n)
-    Cr_kN = Cr/1000 # kN
+    Cr_kN = Cr/1000                    # kN
     
     return Cr_kN
 
