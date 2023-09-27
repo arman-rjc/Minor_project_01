@@ -61,7 +61,7 @@ st.write(f'Date: {date}')
 
 st.sidebar.write('## Input parameters')
 
-B = st.sidebar.number_input('Steel Plate thickness/web thickness, b (mm)',value = 10,step=1.,format="%.2f")
+B = st.sidebar.number_input('Steel Plate thickness/web thickness, b (mm)',value = 10,step=1,format="%.2f")
 H = st.sidebar.number_input('Height of steel plate, d (mm)',value = 250)
 
 st.write("### **Input paramerts:**")
