@@ -71,7 +71,7 @@ left_column,middle_column, right_column = st.columns(3)
 
 
 
-@handcalc()
+@handcalc(precision=3)
 def stiffener_plate_buckling_resistance(B:float,H:float):
 
     Fy= 345             # MPa
