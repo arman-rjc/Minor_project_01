@@ -52,3 +52,16 @@ project_name = st.sidebar.text_input("Project Name:")
 job_no = st.sidebar.text_input("Job No:")
 designer = st.sidebar.text_input("Designer:")
 date = st.sidebar.text_input("Date:")
+
+st.write(f'Project Name: {project_name}')
+st.write(f'Job No: {job_no}')
+st.write(f'Designer: {designer}')
+st.write(f'Date: {date}')
+# st.divider()  # 👈 Draws a horizontal rule
+
+st.sidebar.write('## Input parameters')
+
+w = st.sidebar.number_input('Steel Plate thickness/web thickness, w (mm)',value = 10)
+d = st.sidebar.number_input('Height of steel plate, d (mm)',value = 250)
+
+
