@@ -64,6 +64,9 @@ st.sidebar.write('## Input parameters')
 B = st.sidebar.number_input('Steel Plate thickness/web thickness, b (mm)',value = 10,step=1,format="%.2f")
 H = st.sidebar.number_input('Height of steel plate, d (mm)',value = 250,step=1,format="%.2f")
 
+B = float(B)
+H = float(H)
+
 st.write("### **Input paramerts:**")
 
 # Create two columns using st.beta_columns()
@@ -72,7 +75,7 @@ left_column,middle_column, right_column = st.columns(3)
 
 
 @handcalc(precision=3)
-def stiffener_plate_buckling_resistance(B:float,H:float):
+def stiffener_plate_buckling_resistance(B: float, H: float):
 
     Fy= 345             # MPa
     n = 1.34            # For hot rolled steel 
