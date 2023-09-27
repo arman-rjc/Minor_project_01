@@ -109,3 +109,6 @@ with left_column:
     
 
 st.write(f'#### Compressive strength of the plate is {round(Cr_kN)} kN')   
+
+image_filename_2 = 'stiffener_plate.png'  # Replace with the actual image file
+st.image(image_filename_2, caption='Fig 1: Stiffener plate geometry', width=600)
