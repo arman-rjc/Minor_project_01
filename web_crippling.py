@@ -29,16 +29,16 @@ st.title('**:blue[Steel Plate Web Crippling ]**')
 # st.divider()  # 👈 Draws a horizontal rule
 
 
+with st.expander("See disclaimer"):
+    # Define the disclaimer text
+    disclaimer_text = """
+    **Disclaimer of Warranty and Liability**
 
-# Define the disclaimer text
-disclaimer_text = """
-**Disclaimer of Warranty and Liability**
+    By using this app, you acknowledge and agree that the results it provides are for informational purposes only. The engineer using this tool is solely responsible for verifying and validating the accuracy of the results obtained. This app is provided "as is," without any warranty or guarantee of any kind, express or implied. In no event shall the developers or contributors be liable for any damages or consequences arising from the use of this app. You are encouraged to exercise due diligence and professional judgment when relying on the output of this tool.
+    """
 
-By using this app, you acknowledge and agree that the results it provides are for informational purposes only. The engineer using this tool is solely responsible for verifying and validating the accuracy of the results obtained. This app is provided "as is," without any warranty or guarantee of any kind, express or implied. In no event shall the developers or contributors be liable for any damages or consequences arising from the use of this app. You are encouraged to exercise due diligence and professional judgment when relying on the output of this tool.
-"""
-
-# Display the disclaimer text if the checkbox is checked
-st.markdown(disclaimer_text)
+    # Display the disclaimer text if the checkbox is checked
+    st.markdown(disclaimer_text)
 
 # Add a checkbox for users to acknowledge the disclaimer
 disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
