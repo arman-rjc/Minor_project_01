@@ -106,6 +106,6 @@ Cr_kN_latex, Cr_kN = stiffener_plate_buckling_resistance(B,H)
 
 with left_column:
     st.latex(Cr_kN_latex)
-    st.write(f'#### Compressive strength of the plate is {round(Cr_kN)} kN')
-
     
+
+ st.write(f'#### Compressive strength of the plate is {round(Cr_kN)} kN')   
