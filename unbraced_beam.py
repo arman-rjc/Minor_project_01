@@ -85,6 +85,7 @@ st.image('gerber_beam.JPG',width = 400)
 # st.image('steel_beam.png', use_container_width=True)
 
 st.write(f'### **:black_medium_small_square: Laterally Unsupported Beam Resistance**')
+st.write(f'##### **This design is per CSA S16 Clause 13.4. The results can be verified against design table of "Handbook of Steel Construction"**')
 
 with st.expander("See disclaimer"):
     # Define the disclaimer text
@@ -362,7 +363,7 @@ st.latex(Mr0_latex)
 st.write(f'#### Moment resistance if fully braced, Mr0 = {round(Mr0[0],1)} kN-m')
 
 
-
+# Calculate factored moment resistance 
 @handcalc()
 def Factored_Moment_resistance_0(Mp,M_u):
     Phi = 0.9
