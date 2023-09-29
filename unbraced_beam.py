@@ -127,14 +127,14 @@ units = ['Metric','Imperial']
 selected_units = st.sidebar.selectbox('Beam section unit:', units)
 
 
-w2 = st.sidebar.number_input(' w2 ',value = 1.0)
+w2 = st.sidebar.number_input(' Coefficient to account for increased moment, w2 ',value = 1.0)
 L_u = st.sidebar.number_input('Unbraced beam length, L_u (mm)',value = 1000)
 Fy = st.sidebar.number_input('Steel yield strength, Fy (MPa)',value = 345)
 
 
-# Get the column name for which you want to display unique items
-column_name = 'Ds_i'  # Replace 'YourColumnName' with the actual column name
-column_name_m = 'Ds_m'  # Replace 'YourColumnName' with the actual column name
+# Get the column name for which yqou want to display unique items
+column_name = 'Ds_i'     # Replace 'YourColumnName' with the actual column name
+column_name_m = 'Ds_m'   # Replace 'YourColumnName' with the actual column name
 filename = "W_CISC.xlsm"
 
 selected_depth = "W8"
