@@ -368,7 +368,7 @@ def Factored_Moment_resistance_0(Mp,M_u):
     Phi = 0.9
     if M_u<(0.67*Mp): Mr = Phi*M_u
     else: Mr = min(1.15*Phi*Mp*((1-(0.28*Mp/M_u))),Phi*Mp)
-    return Mr
+    return int(Mr)
 
 def Governing_Mp(Mp,My):
     if overall_section_class<=2: Mp_governs = Mp
