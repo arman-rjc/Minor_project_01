@@ -149,6 +149,12 @@ with left_column:
     B = df_section.loc[:,'B'].unique()
     T = df_section.loc[:,'T'].unique()
     W = df_section.loc[:,'W'].unique()
+    Ix = df_section.loc[:,'Ix'].unique()
+    Iy = df_section.loc[:,'Iy'].unique()
+    Sx = df_section.loc[:,'Sx'].unique()
+    Zx = df_section.loc[:,'Zx'].unique()
+    J = df_section.loc[:,'J'].unique()
+    Cw = df_section.loc[:,'Cw'].unique()
 
     # st.write(f'### **:black_medium_small_square: List of parameters:**')
     # st.write(f':black_medium_small_square: Depth of beam, d  = **{D[0]}** mm [**{round(D[0]/25.4,1)}** in]')
