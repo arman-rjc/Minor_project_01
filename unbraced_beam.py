@@ -127,7 +127,7 @@ selected_units = st.sidebar.selectbox('Beam section unit:', units)
 
 
 w2 = st.sidebar.number_input(' w2 ',value = 1.0)
-L_u = st.sidebar.number_input('Concrete section height, L_u (mm)',value = 1000)
+L_u = st.sidebar.number_input('Unbraced beam length, L_u (mm)',value = 1000)
 Fy = st.sidebar.number_input('Steel yield strength, Fy (MPa)',value = 345)
 
 
@@ -311,7 +311,7 @@ def factored_moment_my(Fy,Sx):
     return My
 My_latex, My = factored_moment_my(Fy,Sx)
 st.latex(My_latex)
-st.write(f'#### Factored elastic moment resistance, My = {My[0]} kN-m')
+st.write(f'#### Factored elastic moment resistance, My = {round(My[0],1)} kN-m')
 
 
 
@@ -322,7 +322,7 @@ def factored_moment_mp(Fy,Zx):
 
 Mp_latex, Mp = factored_moment_mp(Fy,Zx)
 st.latex(Mp_latex)
-st.write(f'#### Factored plastic moment resistance, Mp = {Mp[0]} kN-m')
+st.write(f'#### Factored plastic moment resistance, Mp = {round(Mp[0],1)} kN-m')
 
 
 
@@ -338,7 +338,7 @@ def critical_elastic_moment_mu(w2,L_u,Iy,G,J,E,Cw):
 
 Mu_latex,M_u = critical_elastic_moment_mu(w2,L_u,Iy,G,J,E,Cw)
 st.latex(Mu_latex)
-st.write(f'#### Critical elastic moment for unbraced segment of the beam, Mu = {round(M_u,3)} kN-m')
+st.write(f'#### Critical elastic moment for unbraced segment of the beam, Mu = {round(M_u,1)} kN-m')
 
 
 
@@ -355,7 +355,7 @@ def Mr0(overall_section_class,Fy,Sx,Zx):
 
 Mr0_latex,Mr0 = Mr0(overall_section_class,Fy,Sx,Zx)
 st.latex(Mr0_latex)
-st.write(f'#### Moment resistance if fully braced, Mr0 = {round(Mr0[0],3)} kN-m')
+st.write(f'#### Moment resistance if fully braced, Mr0 = {round(Mr0[0],1)} kN-m')
 
 
 
@@ -363,7 +363,7 @@ st.write(f'#### Moment resistance if fully braced, Mr0 = {round(Mr0[0],3)} kN-m'
 def Factored_Moment_resistance_0(Mp,M_u):
     Phi = 0.9
     if M_u<(0.67*Mp): Mr = Phi*M_u
-    else: Mr = min(1.15*Phi*Mp*((1-(0.28*Mp/M_u)/M_u)),Phi*Mp)
+    else: Mr = min(1.15*Phi*Mp*((1-(0.28*Mp/M_u))),Phi*Mp)
     return Mr
 
 def Governing_Mp(Mp,My):
@@ -375,7 +375,7 @@ def Governing_Mp(Mp,My):
 Mp_governs = Governing_Mp(Mp,My)
 Mr_latex,Mr = Factored_Moment_resistance_0(Mp_governs,M_u)
 st.latex(Mr_latex)
-st.write(f'#### Factored Moment resistance, Mr = {Mr} kN-m')
+st.write(f'#### Factored Moment resistance, Mr = :blue[{Mr[0]}] kN-m')
 
 
 
