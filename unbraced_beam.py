@@ -257,6 +257,10 @@ else:
     class_flange = 3
 
 
+
+
+
+
 # Add text to the left column
 
 @handcalc()
@@ -302,7 +306,7 @@ overall_section_class = max(class_flange,class_web)
 st.write(f'#### Overall section class = {overall_section_class}')
 
 
-
+st.write(f'### **:black_medium_small_square: Laterally Unsupported Beam Resistance per Clause 13.6**')
 
 
 @handcalc()
@@ -375,7 +379,7 @@ def Governing_Mp(Mp,My):
 Mp_governs = Governing_Mp(Mp,My)
 Mr_latex,Mr = Factored_Moment_resistance_0(Mp_governs,M_u)
 st.latex(Mr_latex)
-st.write(f'#### Factored Moment resistance, Mr = :blue[{Mr[0]}] kN-m')
+st.write(f'#### Factored Moment resistance, Mr = :blue[{Mr}] kN-m')
 
 
 
