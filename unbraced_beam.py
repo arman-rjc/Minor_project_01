@@ -214,14 +214,14 @@ with right_column:
     st.image(image_filename, caption='Fig 1: Section parameters', width=400)
 #________________________________________________________________________________
 
-
+st.write(f'### **:black_medium_small_square: Section Class:**')
 
 # Create two columns using st.beta_columns()
 left_column2, right_column2 = st.columns(2)
 
 # Add text to the left column
 with left_column2:
-    st.write(f'### **:black_medium_small_square: Section Class:**')
+    
 
     @handcalc()
     def class_one(B,T,Fy):
