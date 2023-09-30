@@ -216,10 +216,11 @@ with right_column:
 
 
 
-
+# Create two columns using st.beta_columns()
+left_column2, right_column2 = st.columns(2)
 
 # Add text to the left column
-with left_column:
+with left_column2:
     st.write(f'### **:black_medium_small_square: Section Class:**')
 
     @handcalc()
@@ -265,7 +266,7 @@ with left_column:
 
 
 # Add text to the right column
-with right_column:
+with right_column2:
     @handcalc()
     def web_class(B,D,T,W,Fy):
         bel = B[0]/2  # mm
