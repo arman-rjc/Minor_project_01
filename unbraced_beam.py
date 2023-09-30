@@ -265,7 +265,7 @@ with left_column:
 
 
 # Add text to the right column
-with left_column:
+with right_column:
     @handcalc()
     def web_class(B,D,T,W,Fy):
         bel = B[0]/2  # mm
