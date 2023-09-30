@@ -122,4 +122,4 @@ with middle_column:
 with st.expander(f"### Reference Material"):
     st.write('###### [:blue[According to CSA S16 CL11.0]]')
     image_filename = 'section_classes.JPG'  # Replace with the actual image file
-    st.image(image_filename, caption='Fig 1: Concept behind section class', width=800)
+    st.image(image_filename, caption='Fig 1: Concept behind section class', width=600)

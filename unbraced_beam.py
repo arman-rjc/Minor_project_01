@@ -36,6 +36,27 @@ def CISC_database_reader(filename:str,I_check = 1):
     
     return df_sort
 
+    
+def CISC_database_reader_all(filename:str,I_check = 1):
+    '''
+    Collects all the available W sections in Canada, stores them in a list and 
+    Returns the list of W sections from CISC databse.
+    '''
+    df = pd.read_excel(filename,skipfooter =2)
+    mask2 = df.loc[:,"Shp"]== '1'                               # This function will only store all the W sections that are readily available in Canada and commonly used
+    df_sort = df.loc[mask2,["Ds_i","Ds_m","D","B","T","W","BT","HW",
+                        "A_Th","Ix","Sx","Zx","Iy",
+                       "Sy","Zy","J","Cw","Mass"]]
+    # mask3 = df.loc[:,"Ix"]>=I_check
+    # df_sort = df.loc[mask3,["Ds_i","Ds_m","D","B","T","W","BT","HW",
+    #                     "A_Th","Ix","Sx","Zx","Iy",
+    #                    "Sy","Zy","J","Cw","Mass"]]
+    # df_sort = df_sort.sort_values("Mass")
+    # df_sort
+    
+    return df_sort
+
+
 
     
 def Most_economical_section(filename):
@@ -141,7 +162,7 @@ selected_depth = "W8"
 Criteria = "Mass"
 
 
-df = CISC_database_reader(filename)
+df = CISC_database_reader_all(filename)
 
 if selected_units == 'Metric':
     # Get unique items from the specified column
