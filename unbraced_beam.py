@@ -288,9 +288,7 @@ with left_column:
     class2_web_right = 1700/sqrt(Fy)
     class3_web_right = 1900/sqrt(Fy)
 
-    # st.write(f'#### **Class 1 limit:{round(145/sqrt(Fy),2)}**')
-    # st.write(f'#### **Class 2 limit:{round(170/sqrt(Fy),2)}**')
-    # st.write(f'#### **Class 3 limit:{round(200/sqrt(Fy),2)}**')
+
 
     if widthtothickness_web <= class1_web_right:
         st.write(f' Since b/t = {round(widthtothickness_web,1)} is less than or equal to 1100/sqrt(Fy) = {round(1100/sqrt(Fy),2)}')
