@@ -269,7 +269,6 @@ with left_column2:
 with right_column2:
     @handcalc()
     def web_class(B,D,T,W,Fy):
-        bel = B[0]/2  # mm
         h = D[0]-2*T[0]
         w = W[0]    # mm
 
