@@ -43,7 +43,7 @@ def CISC_database_reader_all(filename:str,I_check = 1):
     Returns the list of W sections from CISC databse.
     '''
     df = pd.read_excel(filename,skipfooter =2)
-    mask2 = df.loc[:,"Shp"]== '1'                               # This function will only store all the W sections that are readily available in Canada and commonly used
+    mask2 = df.loc[:,"Shp"]== 1                             # This function will only store all the W sections that are readily available in Canada and commonly used
     df_sort = df.loc[mask2,["Ds_i","Ds_m","D","B","T","W","BT","HW",
                         "A_Th","Ix","Sx","Zx","Iy",
                        "Sy","Zy","J","Cw","Mass"]]
