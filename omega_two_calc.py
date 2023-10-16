@@ -254,7 +254,7 @@ left_column2, middle_column2,right_column2 = st.columns(3)
 
 
 # Create a Streamlit app
-st.write(f'#### **:black_medium_small_square: Shear Force and Bending Moment Diagrams for the unbraced portion of the beam**')
+st.write(f'#### **:black_medium_small_square: Moment gradiant for the unbraced portion of the beam**')
 
 # Create two columns using st.beta_columns()
 left_column2, middle_column2,right_column2 = st.columns(3)
@@ -319,3 +319,9 @@ plt.tight_layout()
 st.pyplot(fig)
 
 
+
+#________________________________________________________________________________
+with st.expander(":black_medium_small_square: 13.6 Bending - Laterally unsupported members"):
+    # Add a banner image at the top
+    st.image('omega_two_ref.JPG',width = 600)
+    st.image('omega_two_ref2.JPG',width = 600)
