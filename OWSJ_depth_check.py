@@ -26,6 +26,9 @@ from PyNite import FEModel3D
 # Setting page layout 
 st.set_page_config(layout='wide')
 
+st.write(f'## **:blue[ OWSJ depth checking]**')
+st.write(f'##### **As per the steps mentioned in "Structural Steel for Canadian Buildings" book page -127**')
+
 # Custom CSS for changing the font size, making it bold, and using Times New Roman font
 custom_css = """
 <style>
@@ -42,17 +45,6 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 
-# Create two columns using st.beta_columns()
-left_column2, middle_column2,right_column2 = st.columns(3)
-
-with middle_column2:
-    # Add a banner image at the top
-    st.image('OWSJ_check.JPG',width = 700)
-
-
-st.write(f'## **:blue[ OWSJ depth checking]**')
-st.write(f'##### **As per the steps mentioned in "Structural Steel for Canadian Buildings" book page -127**')
-
 with st.expander("See disclaimer"):
     # Define the disclaimer text
     disclaimer_text = """
@@ -67,33 +59,66 @@ with st.expander("See disclaimer"):
 # Add a checkbox for users to acknowledge the disclaimer
 disclaimer_accepted = st.checkbox("I have read and agree to the Disclaimer of Warranty and Liability")
 
-#
-#  Create a Streamlit app
-st.sidebar.write("Project Information")
+with st.expander(":black_medium_small_square: Project Information"):
+    #  Create a Streamlit app
+    # st.sidebar.write("Project Information")
 
-# Add text input boxes for Project Name, Job No, Designer, and Date
-project_name = st.sidebar.text_input("Project Name:")
-job_no = st.sidebar.text_input("Job No:")
-designer = st.sidebar.text_input("Designer:")
-date = st.sidebar.text_input("Date:")
+    # Add text input boxes for Project Name, Job No, Designer, and Date
+    project_name = st.text_input("Project Name:")
+    job_no = st.text_input("Job No:")
+    designer = st.text_input("Designer:")
+    date = st.text_input("Date:")
+
+
+# Create two columns using st.beta_columns()
+left_column2, right_column2 = st.columns(2)
+
+with right_column2:
+    # Add a banner image at the top
+    st.image('OWSJ_check.JPG',width = 800)
+
+
+#
+# #  Create a Streamlit app
+# st.sidebar.write("Project Information")
+
+# # Add text input boxes for Project Name, Job No, Designer, and Date
+# project_name = st.sidebar.text_input("Project Name:")
+# job_no = st.sidebar.text_input("Job No:")
+# designer = st.sidebar.text_input("Designer:")
+# date = st.sidebar.text_input("Date:")
+
+
+
 
 # Display the input values
 
 
-st.write(f'Project Name: {project_name}')
-st.write(f'Job No: {job_no}')
-st.write(f'Designer: {designer}')
-st.write(f'Date: {date}')
+# st.write(f'Project Name: {project_name}')
+# st.write(f'Job No: {job_no}')
+# st.write(f'Designer: {designer}')
+# st.write(f'Date: {date}')
 
 
-st.sidebar.write('## Input parameters')
+# st.sidebar.write('## Input parameters')
 
-Span = st.sidebar.number_input('Beam span length, L (m)',value = 8)
-DL = st.sidebar.number_input('Area dead load, DL (kPa)',value = 1.2)
-LL = st.sidebar.number_input('Area live/snow load, LL/SL (kPa)',value = 1.4)
-WL = st.sidebar.number_input('Area wind uplift load, WL (kPa)',value = 0.38)
+# Span = st.sidebar.number_input('Beam span length, L (m)',value = 8)
+# DL = st.sidebar.number_input('Area dead load, DL (kPa)',value = 1.2)
+# LL = st.sidebar.number_input('Area live/snow load, LL/SL (kPa)',value = 1.4)
+# WL = st.sidebar.number_input('Area wind uplift load, WL (kPa)',value = 0.38)
 
-TW = st.sidebar.number_input('Joist tributary width, TW (m)',value = 2.0)
+# TW = st.sidebar.number_input('Joist tributary width, TW (m)',value = 2.0)
+
+
+with left_column2:
+    st.write('## Input parameters')
+
+    Span = st.number_input('Beam span length, L (m)',value = 8)
+    DL = st.number_input('Area dead load, DL (kPa)',value = 1.2)
+    LL = st.number_input('Area live/snow load, LL/SL (kPa)',value = 1.4)
+    WL = st.number_input('Area wind uplift load, WL (kPa)',value = 0.38)
+
+    TW = st.number_input('Joist tributary width, TW (m)',value = 2.0)
 
 st.write(f'#### **:black_medium_small_square: Factored Area Load (kPa)**')
 
