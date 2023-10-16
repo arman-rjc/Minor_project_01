@@ -40,8 +40,13 @@ custom_css = """
 # Display the custom CSS
 st.markdown(custom_css, unsafe_allow_html=True)
 
-# Add a banner image at the top
-st.image('Beam_loading.png',width = 600)
+
+# Create two columns using st.beta_columns()
+left_column2, middle_column2,right_column2 = st.columns(3)
+
+with middle_column2:
+    # Add a banner image at the top
+    st.image('Beam_loading.png',width = 600)
 
 
 st.write(f'### **:black_medium_small_square: Coefficient to account for increased moment resistance (w2)**')
@@ -242,10 +247,7 @@ x = filtered_df['Span (in)']
 moment = filtered_df['Moment (lb-in)']
 shear = filtered_df['Shear (lb)']
 
-# Create two columns using st.beta_columns()
-left_column2, middle_column2,right_column2 = st.columns(3)
 
-# with middle_column2:
 #     image_filename = 'Beam_loading.png'  # Replace with the actual image file
 #     st.image(image_filename, caption='Fig 1: Parameters', width=700)
 
