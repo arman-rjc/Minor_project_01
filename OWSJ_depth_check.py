@@ -198,6 +198,9 @@ if Joist_span <= 15:
 else:
     df_forwork.columns = Factored_load_2
 
+
+st.write(f'#### **:black_medium_small_square: Data Table for the selected Joist span**')
+
 df_forwork
 
 first_column_index_gt_5 = df_forwork.columns[df_forwork.columns > P_f].min()
@@ -223,6 +226,7 @@ Load = float(Load)
 economical_joist_depth = float(df.index[0][1])
 P_r_table = float(df.columns[0])
 
+st.write(f'#### **:black_medium_small_square: Output**')
 
 J_d1 = st.write(f'Selected joist depth: {economical_joist_depth} mm')
 P_r1 = st.write(f'Factored OWSJ resistance, P_r (kN/m): {P_r_table} kN/m')
