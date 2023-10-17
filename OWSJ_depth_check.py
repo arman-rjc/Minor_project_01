@@ -178,26 +178,80 @@ Servicability_live_latex,Servicability_live = Servicability_live(unfactored_jois
 
 st.latex(Servicability_live_latex)
 
-J_d = st.number_input('Selected joist depth, d (mm)')
-P_r = st.number_input('Factored OWSJ resistance, P_r (kN/m)')
-S_r = st.number_input('Service load resistance, S_r (kN/m)')
-LL_per = st.number_input('Percentager of live load to produce L/360 deflection, (%)')
+# Include the Canam joist table values
 
-@handcalc()
-def allowable_service_live(S_r,LL_per):
+df = pd.read_excel('owsj.xlsm','Only_economical_sections')
+df_modified = df.set_index(['Span','Joist Depth','Data'])
+IDX = pd.IndexSlice
 
-    allowable_service_live =  (LL_per/100)*S_r  # kN/m
+Joist_span = round(Span)
+P_f = factored_joist_line_load
 
-    return allowable_service_live
+df_forwork = df_modified.loc[IDX[Joist_span,:,['Weight','Load']],:]  # get all the weight in one rows 
 
-allowable_service_live_latex,allowable_service_live = allowable_service_live(S_r,LL_per)
 
-st.latex(allowable_service_live_latex)
+Factored_load_1 = [4.5,6,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5]
+Factored_load_2 = [4.5,5.4,6.3,7.2,8.1,9,9.9,10.8,11.7,12.6,13.5,14.4,15.3]
+
+if Joist_span <= 15:
+    df_forwork.columns = Factored_load_1
+else:
+    df_forwork.columns = Factored_load_2
+
+df_forwork
+
+first_column_index_gt_5 = df_forwork.columns[df_forwork.columns > P_f].min()
+selected_column = df_forwork[first_column_index_gt_5]
+
+
+# drop all the rows with "NaN" value
+selected_column.dropna(inplace=True)
+df = pd.DataFrame(selected_column)  
+
+
+# Mass per unit length for the joist
+weight = df.loc[:,:,'Weight'].values[0]
+weight = float(weight)
+# weight
+
+# Percentager of live load to produce L/360 deflection
+Load = df.loc[:,:,'Load'].values[0]
+Load = float(Load)
+# Load
+
+
+economical_joist_depth = float(df.index[0][1])
+P_r_table = float(df.columns[0])
+
+
+J_d1 = st.write(f'Selected joist depth: {economical_joist_depth} mm')
+P_r1 = st.write(f'Factored OWSJ resistance, P_r (kN/m): {P_r_table} kN/m')
+LL_per1 = st.write(f'Live load to produce L/360 deflection, {Load} kN/m')
+
+
+# J_d = st.number_input('Selected joist depth, d (mm)')
+# P_r = st.number_input('Factored OWSJ resistance, P_r (kN/m)')
+# S_r = st.number_input('Service load resistance, S_r (kN/m)')
+# LL_per = st.number_input('Percentager of live load to produce L/360 deflection, (%)')
+
+allowable_service_live = Load
+
+
+# @handcalc()
+# def allowable_service_live(LL_per1):
+
+#     allowable_service_live =  LL_per1  # kN/m
+
+#     return allowable_service_live
+
+# allowable_service_live_latex,allowable_service_live = allowable_service_live(LL_per1)
+
+# st.latex(allowable_service_live_latex)
 
 
 
 
 if Servicability_live>allowable_service_live:
-    st.write(f'#### **:red[Service live load {Servicability_live} kN/m is greater than allowable {allowable_service_live} kN/m (NOT OK) - Check Joist Depth]**')
+    st.write(f'#### **:red[Service live load {round(Servicability_live)} kN/m is greater than allowable {round(allowable_service_live)} kN/m (NOT OK) - Check Joist Depth]**')
 else:
-    st.write(f'#### **:blue[Service live load {Servicability_live} kN/m is less than allowable {allowable_service_live} kN/m (OK) - Use Joist Depth of {J_d} mm]**')
+    st.write(f'#### **:blue[Service live load {round(Servicability_live)} kN/m is less than allowable {round(allowable_service_live)} kN/m (OK) - Use Joist Depth of {economical_joist_depth} mm]**')
