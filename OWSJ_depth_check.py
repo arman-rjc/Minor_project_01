@@ -352,5 +352,5 @@ else:
 
 
 
-# with st.expander("Old catalogue for reference"):
-#     st.image('OWSJ_check.JPG',width = 800)
+with st.expander("Old catalogue for reference"):
+    st.image('OWSJ_check.JPG',width = 800)
