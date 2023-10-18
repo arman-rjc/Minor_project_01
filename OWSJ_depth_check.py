@@ -71,7 +71,7 @@ with st.expander(":black_medium_small_square: Project Information"):
 
 
 # Create two columns using st.beta_columns()
-left_column2, middle_column2,right_column2 = st.columns(3)
+left_column2,right_column2 = st.columns(3)
 
 with right_column2:
     # Add a banner image at the top
@@ -354,3 +354,5 @@ else:
 
 with st.expander("Old catalogue for reference"):
     st.image('OWSJ_check.JPG',width = 800)
+    #     # Add a banner image at the top
+    st.image('joist.png',width = 600)
