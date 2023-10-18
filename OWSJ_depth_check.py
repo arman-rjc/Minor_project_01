@@ -78,9 +78,9 @@ with right_column2:
     st.image('owsj_updated.JPG',width = 600)
     
 
-# with middle_column2:
-#     # Add a banner image at the top
-#     st.image('joist.JPG',width = 600)
+with middle_column2:
+    # Add a banner image at the top
+    st.image('joist.png',width = 600)
 
 
 #
