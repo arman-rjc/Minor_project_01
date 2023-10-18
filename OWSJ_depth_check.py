@@ -279,7 +279,7 @@ else:
 # Step 3: Show all the calculation
 
 st.write(f'#### **__________________________________________________________________________________________________________**')
-st.write(f'#### **:black_medium_small_square: Data Table for all other Joist span**')
+st.write(f'#### **:black_medium_small_square: Data Table for all other Joist depth**')
 st.write(f'##### **:black_medium_small_square: Select any other joist depth below to check the capacity**')
 
 J_d = st.number_input('Select the joist depth you want to check, d (mm)', value = economical_joist_depth )
