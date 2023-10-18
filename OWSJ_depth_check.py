@@ -75,12 +75,12 @@ left_column2,right_column2 = st.columns(2)
 
 with right_column2:
     # Add a banner image at the top
-    st.image('owsj_updated.JPG',width = 800)
+    st.image('owsj_updated.JPG',width = 600)
     
 
 # with middle_column2:
 #     # Add a banner image at the top
-#     st.image('joist.png',width = 600)
+#     st.image('joist.JPG',width = 600)
 
 
 #
@@ -130,9 +130,9 @@ st.write(f'#### **:black_medium_small_square: Factored Area Load (kPa)**')
 @handcalc()
 def factored_area_load(DL,LL,WL):
 
-    factored_area_load = 1.25*DL+1.5*LL+0.4*WL  # kPa
+    sigma_f = 1.25*DL+1.5*LL+0.4*WL  # kPa
 
-    return factored_area_load
+    return sigma_f
 
 
 factored_area_load_latex,factored_area_load = factored_area_load(DL,LL,WL)
@@ -143,11 +143,11 @@ st.write(f'#### **:black_medium_small_square: Factored Joist Line Load (kN/m)**'
 
 
 @handcalc()
-def factored_joist_line_load(factored_area_load,TW):
+def factored_joist_line_load(sigma_f,TW):
 
-    factored_joist_line_load = factored_area_load*TW  # kN/m
+    P_f = sigma_f*TW  # kN/m
 
-    return factored_joist_line_load
+    return P_f
 
 factored_joist_line_load_latex,factored_joist_line_load = factored_joist_line_load(factored_area_load,TW)
 
@@ -160,10 +160,10 @@ st.write(f'#### **:black_medium_small_square: Unfactored Line Load on the Joist 
 @handcalc()
 def unfactored_joist_line_load(LL,TW):
 
-    unfactored_joist_line_load = LL*TW  # kN/m
+    P = LL*TW  # kN/m
 
 
-    return unfactored_joist_line_load
+    return P
 
 unfactored_joist_line_load_latex,unfactored_joist_line_load = unfactored_joist_line_load(LL,TW)
 
@@ -172,11 +172,11 @@ st.latex(unfactored_joist_line_load_latex)
 
 
 @handcalc()
-def Servicability_live(unfactored_joist_line_load):
+def Servicability_live(P):
 
-    Servicability_live = 0.9*unfactored_joist_line_load  # kN/m
+    P_s = 0.9*P  # kN/m
 
-    return Servicability_live
+    return P_s
 
     
 Servicability_live_latex,Servicability_live = Servicability_live(unfactored_joist_line_load)
@@ -279,7 +279,7 @@ else:
 # Step 3: Show all the calculation
 
 st.write(f'#### **__________________________________________________________________________________________________________**')
-st.write(f'#### **:black_medium_small_square: Data Table for all other Joist depth**')
+st.write(f'#### **:black_medium_small_square: Data Table for all other Joist span**')
 st.write(f'##### **:black_medium_small_square: Select any other joist depth below to check the capacity**')
 
 J_d = st.number_input('Select the joist depth you want to check, d (mm)', value = economical_joist_depth )
@@ -328,31 +328,7 @@ if Servicability_live>Joist_service_load:
 else:
     st.write(f'#### **:blue[Service live load {round(Servicability_live,1)} kN/m is less than allowable {round(Joist_service_load,1)} kN/m (OK) - Use Joist Depth of {J_d} mm]**')
 
-# df_forwork
-# selected_column.loc[IDX['Span',],:]
-
-# # drop all the rows with "NaN" value
-# selected_column.dropna(inplace=True)
-# df = pd.DataFrame(selected_column)  
-
-
-# # Mass per unit length for the joist
-# weight = df.loc[:,:,'Weight'].values[0]
-# weight = float(weight)
-# # weight
-
-# # Percentager of live load to produce L/360 deflection
-# Load = df.loc[:,:,'Load'].values[0]
-# Load = float(Load)
-# # Load
-
-
-# economical_joist_depth = float(df.index[0][1])
-# P_r_table = float(df.columns[0])
-
 
 
 with st.expander("Old catalogue for reference"):
     st.image('OWSJ_check.JPG',width = 800)
-    #     # Add a banner image at the top
-    # st.image('joist.png',width = 600)
