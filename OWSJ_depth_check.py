@@ -75,7 +75,7 @@ left_column2,right_column2 = st.columns(2)
 
 with right_column2:
     # Add a banner image at the top
-    st.image('owsj_updated.JPG',width = 600)
+    st.image('owsj_updated.JPG',width = 800)
     
 
 # with middle_column2:
@@ -169,7 +169,7 @@ unfactored_joist_line_load_latex,unfactored_joist_line_load = unfactored_joist_l
 
 st.latex(unfactored_joist_line_load_latex)
 
-
+st.write(f'#### **:black_medium_small_square: Unfactored service Live Load on the Joist (kN/m)**')
 
 @handcalc()
 def Servicability_live(P):
