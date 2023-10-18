@@ -71,16 +71,16 @@ with st.expander(":black_medium_small_square: Project Information"):
 
 
 # Create two columns using st.beta_columns()
-left_column2,right_column2 = st.columns(2)
+left_column2,middle_column2,right_column2 = st.columns(3)
 
 with right_column2:
     # Add a banner image at the top
-    st.image('owsj_updated.JPG',width = 800)
+    st.image('owsj_updated.JPG',width = 600)
     
 
-# with middle_column2:
-#     # Add a banner image at the top
-#     st.image('joist.JPG',width = 600)
+with middle_column2:
+    # Add a banner image at the top
+    st.image('joist_loading.PNG',width = 500)
 
 
 #
