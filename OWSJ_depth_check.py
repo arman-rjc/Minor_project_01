@@ -200,6 +200,7 @@ else:
 
 
 st.write(f'#### **:black_medium_small_square: Data Table for the selected Joist span**')
+st.write(f'##### **This table only showing the information for most economical joist depth**')
 
 df_forwork
 
@@ -228,9 +229,9 @@ P_r_table = float(df.columns[0])
 
 st.write(f'#### **:black_medium_small_square: Output**')
 
-J_d1 = st.write(f'Selected joist depth: {economical_joist_depth} mm')
-P_r1 = st.write(f'Factored OWSJ resistance, P_r (kN/m): {P_r_table} kN/m')
-LL_per1 = st.write(f'Live load to produce L/360 deflection, {Load} kN/m')
+J_d1 = st.write(f'##### Selected joist depth: {economical_joist_depth} mm')
+P_r1 = st.write(f'##### Estimated linear weight, W_r (kg/m): {P_r_table} kg/m')
+LL_per1 = st.write(f'##### Live load to produce L/360 deflection: {Load} kN/m')
 
 
 # J_d = st.number_input('Selected joist depth, d (mm)')
@@ -256,6 +257,91 @@ allowable_service_live = Load
 
 
 if Servicability_live>allowable_service_live:
-    st.write(f'#### **:red[Service live load {round(Servicability_live)} kN/m is greater than allowable {round(allowable_service_live)} kN/m (NOT OK) - Check Joist Depth]**')
+    st.write(f'#### **:red[Service live load {round(Servicability_live,1)} kN/m is greater than allowable {round(allowable_service_live,1)} kN/m (NOT OK) - Check Joist Depth]**')
 else:
-    st.write(f'#### **:blue[Service live load {round(Servicability_live)} kN/m is less than allowable {round(allowable_service_live)} kN/m (OK) - Use Joist Depth of {economical_joist_depth} mm]**')
+    st.write(f'#### **:blue[Service live load {round(Servicability_live,1)} kN/m is less than allowable {round(allowable_service_live,1)} kN/m (OK) - Use Joist Depth of {economical_joist_depth} mm]**')
+
+
+# with st.expander(":black_medium_small_square: Canam Joist Selection Table for Reference"):
+#     df = pd.read_excel('owsj.xlsm','Only_economical_sections')
+#     df_modified = df.set_index(['Span','Joist Depth','Data'])
+#     df_modified
+
+
+# Second part of this app
+# Step 1: show the table with data for all other available depth
+# Step 2; take joist depth input
+# Step 3: Show all the calculation
+
+st.write(f'#### **__________________________________________________________________________________________________________**')
+st.write(f'#### **:black_medium_small_square: Data Table for all other Joist span**')
+st.write(f'##### **:black_medium_small_square: Select any other joist depth below to check the capacity**')
+
+J_d = st.number_input('Select the joist depth you want to check, d (mm)', value = economical_joist_depth )
+
+
+df = pd.read_excel('owsj.xlsm','data')
+df_modified = df.set_index(['Span','Joist Depth','Data'])
+# df_modified
+
+Joist_span = round(Span)
+P_f = factored_joist_line_load
+
+df_forwork = df_modified.loc[IDX[Joist_span,:,['Weight','Load']],:]  # get all the weight in one rows 
+
+
+Factored_load_1 = [4.5,6,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5]
+Factored_load_2 = [4.5,5.4,6.3,7.2,8.1,9,9.9,10.8,11.7,12.6,13.5,14.4,15.3]
+
+if Joist_span <= 15:
+    df_forwork.columns = Factored_load_1
+else:
+    df_forwork.columns = Factored_load_2
+
+df_forwork
+
+
+first_column_index_gt_5 = df_forwork.columns[df_forwork.columns > P_f].min()
+selected_column = df_forwork[first_column_index_gt_5]
+# selected_column
+
+# df_forwork = selected_column.loc[IDX[Joist_span,:,['Weight','Load']],:]  # get all the weight in one rows 
+
+Joist_mass = selected_column.loc[Joist_span,J_d,'Weight']  # get all the weight in one rows 
+Joist_service_load = selected_column.loc[Joist_span,J_d,'Load']  # get all the weight in one rows 
+
+st.write(f'#### **:black_medium_small_square: Output**')
+
+J_d2 = st.write(f'##### Selected joist depth: {J_d} mm')
+P_r2 = st.write(f'##### Estimated linear weight, W_r (kg/m): {Joist_mass} kg/m')
+LL_per2 = st.write(f'##### Live load to produce L/360 deflection: {Joist_service_load} kN/m')
+
+
+
+if Servicability_live>Joist_service_load:
+    st.write(f'#### **:red[Service live load {round(Servicability_live,1)} kN/m is greater than allowable {round(Joist_service_load,1)} kN/m (NOT OK) - Check Joist Depth]**')
+else:
+    st.write(f'#### **:blue[Service live load {round(Servicability_live,1)} kN/m is less than allowable {round(Joist_service_load,1)} kN/m (OK) - Use Joist Depth of {J_d} mm]**')
+
+# df_forwork
+# selected_column.loc[IDX['Span',],:]
+
+# # drop all the rows with "NaN" value
+# selected_column.dropna(inplace=True)
+# df = pd.DataFrame(selected_column)  
+
+
+# # Mass per unit length for the joist
+# weight = df.loc[:,:,'Weight'].values[0]
+# weight = float(weight)
+# # weight
+
+# # Percentager of live load to produce L/360 deflection
+# Load = df.loc[:,:,'Load'].values[0]
+# Load = float(Load)
+# # Load
+
+
+# economical_joist_depth = float(df.index[0][1])
+# P_r_table = float(df.columns[0])
+
