@@ -355,4 +355,4 @@ else:
 with st.expander("Old catalogue for reference"):
     st.image('OWSJ_check.JPG',width = 800)
     #     # Add a banner image at the top
-    st.image('joist.png',width = 600)
+    # st.image('joist.png',width = 600)
