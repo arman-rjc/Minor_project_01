@@ -7,6 +7,9 @@ These will be very simple app with user interface.
 List of app development under progress:
 
 * Flexural reinforcement calculator
-* Steel beam design
-* Gerber beam design
-* Wood shear wall design
+* Laterally unsupported steel beam design
+* Stiffener check
+* Web crippling check
+* Steel geomtery check
+* w2 calculator
+* OWSJ capacity check
