@@ -482,11 +482,11 @@ else:
         st.write(f'##### **Service (1.00*D+0.9*S) Load: {round((0.90*S+1.00*Roofing+1.00*SteelDeck+1.00*MechElect+1.00*OWSJ+1.00*Girder),2)} kPa**')
 
 
-# with st.expander("Typical steel deck components - for reference"):
-#     st.image('Typical_steel_deck.PNG',width = 800)
+with st.expander("Typical steel deck components - for reference"):
+    st.image('Typical_steel_deck.PNG',width = 500)
 
-# with st.expander("Dead Load Table "):
-#     st.image('dead_loads.PNG',width = 1000)
+with st.expander("Dead Load Table "):
+    st.image('dead_loads.PNG',width = 500)
 
 
 # file = "dead_loads.pdf"
