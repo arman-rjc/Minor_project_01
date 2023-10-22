@@ -485,8 +485,8 @@ else:
 with st.expander("Typical steel deck components - for reference"):
     st.image('Typical_steel_deck.PNG',width = 800)
 
-with st.expander("Dead Load Table "):
-    st.image('dead_loads.PNG',width = 1000)
+# with st.expander("Dead Load Table "):
+#     st.image('dead_loads.PNG',width = 1000)
 
 
 # file = "dead_loads.pdf"
