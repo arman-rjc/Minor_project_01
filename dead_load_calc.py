@@ -20,7 +20,7 @@ import matplotlib.patches as patches
 
 
 st.set_page_config(layout='wide')
-st.title('**:blue[Roof or Floor Dead Load Calculator]**')
+st.title('**:blue[Roof or Floor Load Calculator]**')
 
 
 with st.expander("See disclaimer"):
