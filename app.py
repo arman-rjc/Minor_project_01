@@ -3,10 +3,6 @@ import forallpeople
 import handcalcs.render
 from handcalcs.decorator import handcalc
 import math 
-import pandas as pd
-import pycba as cba
-import numpy as np
-import matplotlib.pyplot as plt
 from dataclasses import dataclass
 from typing import List, Optional
 
