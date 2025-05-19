@@ -441,3 +441,6 @@ data-coffee-color="#ffffff" >
 </div>
 """
 html(floating_button, height=80)
+
+st.markdown("[Donate $5](https://www.buymeacoffee.com/armans01?amount=5)", unsafe_allow_html=True)
+st.markdown("[Donate $10](https://www.buymeacoffee.com/armans01?amount=10)", unsafe_allow_html=True)
