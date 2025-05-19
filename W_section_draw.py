@@ -44,3 +44,22 @@ web_thickness = st.slider("Web Thickness:", 5, 50, 10)
 
 # Draw the steel W section and display it in Streamlit
 st.pyplot(draw_steel_w_section(width, height, flange_width, flange_thickness, web_thickness))
+
+from streamlit.components.v1 import html
+# Add Buy Me a Coffee button
+floating_button = """
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" 
+data-name="bmc-button" 
+data-slug="armans01" 
+data-color="#FFDD00" 
+data-emoji=""  
+data-font="Cookie" 
+data-text="Buy me a coffee" 
+data-outline-color="#000000" 
+data-font-color="#000000" 
+data-coffee-color="#ffffff" >
+</script>
+</div>
+"""
+html(floating_button, height=80)
