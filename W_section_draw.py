@@ -1,6 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+from streamlit.components.v1 import html
 
 # Function to draw a steel W section
 def draw_steel_w_section(width, height, flange_width, flange_thickness, web_thickness):
@@ -45,7 +46,7 @@ web_thickness = st.slider("Web Thickness:", 5, 50, 10)
 # Draw the steel W section and display it in Streamlit
 st.pyplot(draw_steel_w_section(width, height, flange_width, flange_thickness, web_thickness))
 
-from streamlit.components.v1 import html
+
 # Add Buy Me a Coffee button
 floating_button = """
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
