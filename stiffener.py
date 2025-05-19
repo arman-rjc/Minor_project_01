@@ -4,6 +4,8 @@ import math
 from math import sqrt
 import streamlit as st
 from handcalcs.decorator import handcalc
+from streamlit.components.v1 import html
+
 
 st.set_page_config(layout='wide')
 
@@ -112,7 +114,7 @@ image_filename_2 = 'stiffener_plate.png'  # Replace with the actual image file
 st.image(image_filename_2, caption='Fig 1: Stiffener plate geometry', width=600)
 
 
-from streamlit.components.v1 import html
+
 # Add Buy Me a Coffee button
 floating_button = """
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
