@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import math
 from math import pi,sqrt
+from streamlit.components.v1 import html
 
 #________________________________________________________________________________________________________
 # How to run this app:
@@ -422,3 +423,7 @@ with st.expander("Reference Material"):
 
     image_filename = 'bending_unbraced.JPG'  # Replace with the actual image file
     st.image(image_filename, caption='Fig 2: Bending equations', width=1000)
+
+
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="armans01" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
