@@ -425,7 +425,8 @@ with st.expander("Reference Material"):
     st.image(image_filename, caption='Fig 2: Bending equations', width=1000)
 
 # Add Buy Me a Coffee button
-bmc_html = """
+floating_button = """
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" 
 data-name="bmc-button" 
 data-slug="armans01" 
@@ -437,5 +438,6 @@ data-outline-color="#000000"
 data-font-color="#000000" 
 data-coffee-color="#ffffff" >
 </script>
+</div>
 """
-html(bmc_html, height=70)
+html(floating_button, height=80)
