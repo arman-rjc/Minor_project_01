@@ -424,6 +424,8 @@ with st.expander("Reference Material"):
     image_filename = 'bending_unbraced.JPG'  # Replace with the actual image file
     st.image(image_filename, caption='Fig 2: Bending equations', width=1000)
 
+
+
 # Add Buy Me a Coffee button
 floating_button = """
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
@@ -442,5 +444,4 @@ data-coffee-color="#ffffff" >
 """
 html(floating_button, height=80)
 
-st.markdown("[Donate $5](https://www.buymeacoffee.com/armans01?amount=5)", unsafe_allow_html=True)
-st.markdown("[Donate $10](https://www.buymeacoffee.com/armans01?amount=10)", unsafe_allow_html=True)
+
