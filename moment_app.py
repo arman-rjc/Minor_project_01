@@ -4,6 +4,7 @@ import math
 from math import sqrt
 import streamlit as st
 from handcalcs.decorator import handcalc
+from streamlit.components.v1 import html
 
 #________________________________________________________________________________________________________
 # How to run this app:
@@ -202,7 +203,7 @@ st.divider()  # 👈 Draws a horizontal rule
 image_filename_2 = 'bar_diameter_table.png'  # Replace with the actual image file
 st.image(image_filename_2, caption='Fig 2: Bar diameter and area', width=600)
 
-from streamlit.components.v1 import html
+
 # Add Buy Me a Coffee button
 floating_button = """
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
